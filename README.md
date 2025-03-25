@@ -13,13 +13,13 @@ This action mirrors a GitHub repository into a specific directory and uploads th
 
 ```yaml
 - name: Mirror and Upload Repo
-  uses: your-username/my-github-action@v1
+  uses: Linkheroes/git-mirror-repo@latest
   with:
     source-repo: 'https://github.com/source-repo/repo.git'
     target-dir: 'path/to/target/dir'
     target-repo: 'target-username/target-repo'
     github-token: \${{ secrets.GITHUB_TOKEN }}
-
+```
 
 ### Exemple d'utilisation dans un workflow
 
@@ -40,9 +40,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Mirror and Upload Repo
-        uses: your-username/my-github-action@v1
+        uses: Linkheroes/git-mirror-repo@latest
         with:
           source-repo: 'https://github.com/source-repo/repo.git'
           target-dir: 'path/to/target/dir'
           target-repo: 'target-username/target-repo'
           github-token: ${{ secrets.GITHUB_TOKEN }}
+```
