@@ -1,18 +1,27 @@
-name: 'Mirror and Upload Repo Action'
-description: 'Mirror a GitHub repository into a specific directory and upload to another repository with commit history'
+name: "Mirror and Upload Repo Action"
+author: Linkheroes
+description: 🔃  Sync between two independent repositories
+branding:
+    icon: "git-branch"
+    color: "gray-dark"
 inputs:
-  source-repo:
-    description: 'The source repository to mirror'
-    required: true
-  target-dir:
-    description: 'The target directory to mirror the repository into'
-    required: true
-  target-repo:
-    description: 'The target repository to upload the mirrored content'
-    required: true
-  github-token:
-    description: 'The GitHub token for authentication'
-    required: true
+    source-repo:
+        description: "The source repository to mirror"
+        required: true
+    target-dir:
+        description: "The target directory to mirror the repository into"
+        required: true
+    target-repo:
+        description: "The target repository to upload the mirrored content"
+        required: true
+    github-token:
+        description: "The GitHub token for authentication"
+        required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+    using: "docker"
+    image: "Dockerfile"
+    args:
+        - ${{ inputs.source-repo }}
+        - ${{ inputs.target-dir }}
+        - ${{ inputs.target-repo }}
+        - ${{ inputs.github-token }}
