@@ -19,3 +19,30 @@ This action mirrors a GitHub repository into a specific directory and uploads th
     target-dir: 'path/to/target/dir'
     target-repo: 'target-username/target-repo'
     github-token: \${{ secrets.GITHUB_TOKEN }}
+
+
+### Exemple d'utilisation dans un workflow
+
+Voici un exemple de workflow GitHub utilisant votre action :
+
+```yaml
+name: Mirror and Upload Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Mirror and Upload Repo
+        uses: your-username/my-github-action@v1
+        with:
+          source-repo: 'https://github.com/source-repo/repo.git'
+          target-dir: 'path/to/target/dir'
+          target-repo: 'target-username/target-repo'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
